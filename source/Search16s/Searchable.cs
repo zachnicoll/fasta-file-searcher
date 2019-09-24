@@ -259,7 +259,7 @@ namespace Search16s
                 {
                     found = 1;
 
-                    // If there are more than 1 id in the line, they will all split up at printed out.
+                    // If there is more than 1 id in the line, they will all be split up and printed out.
                     string[] entries = GetLine(offsets[i - 1]).Split('>');
 
                     for (int j = 1; j < entries.Length; j++)
@@ -274,6 +274,37 @@ namespace Search16s
             if (found == 0)
             {
                 Console.WriteLine("Error, DNA string {0} not found.", queryString);
+            }
+
+            stream.Close();
+        }
+
+        public void Level6Search(string metaDataString)
+        {
+            int found = 0;
+
+            // Loop through every line in the stream until the query meta-data string is mathced.
+            for (int i = 0; i < offsets.Count; i++)
+            {
+                if (GetLine(offsets[i]).Contains(metaDataString))
+                {
+                    found = 1;
+
+                    // If there is more than 1 id in the line, they will all be split up and printed out.
+                    string[] entries = GetLine(offsets[i]).Split('>');
+
+                    for (int j = 1; j < entries.Length; j++)
+                    {
+                        // Print the matching sequence id.
+                        Console.WriteLine(entries[j].Substring(0, 11));
+                    }
+                }
+            }
+
+            // If the meta-data string is not matched, alert the user.
+            if (found == 0)
+            {
+                Console.WriteLine("Error, DNA string {0} not found.", metaDataString);
             }
 
             stream.Close();
