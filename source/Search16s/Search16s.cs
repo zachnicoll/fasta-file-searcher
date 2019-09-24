@@ -72,6 +72,11 @@ namespace Search16s
 
                             searchObj.Level4Search(indexFile, inFile, outFile);
                         }
+                        else if (searchLevel == "-level5" && args.Length == 3)
+                        {
+                            string queryString = args[2];
+                            searchObj.Level5Search(queryString);
+                        }
                         else
                         {
                             // If a sufficient number of arguments is not found, display and error and exit the program.

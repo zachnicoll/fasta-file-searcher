@@ -39,3 +39,4 @@ C:\Repos\fastafilesearcher_cab201\source\Search16s\bin\Debug\Search16s.pdb
 C:\Repos\fastafilesearcher_cab201\source\Search16s\obj\Debug\Search16s.csproj.CoreCompileInputs.cache
 C:\Repos\fastafilesearcher_cab201\source\Search16s\obj\Debug\Search16s.exe
 C:\Repos\fastafilesearcher_cab201\source\Search16s\obj\Debug\Search16s.pdb
+C:\Repos\fastafilesearcher_cab201\source\Search16s\obj\Debug\Search16s.csprojAssemblyReference.cache

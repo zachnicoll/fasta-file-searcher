@@ -104,7 +104,7 @@ namespace Search16s
         {
             int found = 0;
 
-            // Loop through every line int the stream until the id string is mathced.
+            // Loop through every line in the stream until the id string is mathced.
             for (int i = 0; i < offsets.Count; i++)
             {
                 if (GetLine(offsets[i]).Contains(id))
@@ -188,10 +188,10 @@ namespace Search16s
         {
             if (File.Exists(indexFile) && File.Exists(queryFile))
             {
-                // Create (or overwrite) a new results file every time a Level3 search is run.
+                // Create (or overwrite) a new results file every time a Level4 search is run.
                 File.Create(outFile).Dispose();
 
-                // Open the query file for reading, and the results file for writing.
+                // Open the query file for reading, the index file for reading, and the results file for writing.
                 FileStream inStream = new FileStream(queryFile, FileMode.Open);
                 StreamReader inReader = new StreamReader(inStream);
 
@@ -201,20 +201,22 @@ namespace Search16s
                 FileStream outStream = new FileStream(outFile, FileMode.Open);
                 StreamWriter outWriter = new StreamWriter(outStream);
 
+                // Store each entry of the index file into memory.
                 List<string> indexList = new List<string>();
                 string line;
-                while((line = indexReader.ReadLine()) != null)
+                while ((line = indexReader.ReadLine()) != null)
                 {
                     indexList.Add(line);
                 }
 
-                // While the reader hasn't reached the end of the QUERY file, store the query(id)
-                // and perform the equivalent of a Level2 search with it.
+                // While the reader hasn't reached the end of the QUERY file, store the query(id),
+                // then search the indexes in memory for the matching id. Grab the corresponding index (bit offset),
+                // and store that line directly in the results file.
                 int searchIndex = -1;
                 while ((line = inReader.ReadLine()) != null)
                 {
                     int found = 0;
-                    for(int i = 0; i < indexList.Count; i++)
+                    for (int i = 0; i < indexList.Count; i++)
                     {
                         if (indexList[i].Contains(line))
                         {
@@ -244,6 +246,37 @@ namespace Search16s
             {
                 Console.WriteLine("\n\t<ERROR>\n\n\tInvalid query file name. Check that the name is correct and that the file exists, and try again.");
             }
+        }
+
+        public void Level5Search(string queryString)
+        {
+            int found = 0;
+
+            // Loop through every line in the stream until the query DNA string is mathced.
+            for (int i = 0; i < offsets.Count; i++)
+            {
+                if (GetLine(offsets[i]).Contains(queryString))
+                {
+                    found = 1;
+
+                    // If there are more than 1 id in the line, they will all split up at printed out.
+                    string[] entries = GetLine(offsets[i - 1]).Split('>');
+
+                    for (int j = 1; j < entries.Length; j++)
+                    {
+                        // Print the matching sequence id.
+                        Console.WriteLine(entries[j].Substring(0, 11));
+                    }
+                }
+            }
+
+            // If the query string is not matched, alert the user.
+            if (found == 0)
+            {
+                Console.WriteLine("Error, DNA string {0} not found.", queryString);
+            }
+
+            stream.Close();
         }
     }
 }
