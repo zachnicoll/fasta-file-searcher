@@ -82,6 +82,11 @@ namespace Search16s
                             string metaDataString = args[2];
                             searchObj.Level6Search(metaDataString);
                         }
+                        else if(searchLevel == "-level7" && args.Length == 3)
+                        {
+                            string queryString = args[2];
+                            searchObj.Level7Search(queryString);
+                        }
                         else
                         {
                             // If a sufficient number of arguments is not found, display and error and exit the program.

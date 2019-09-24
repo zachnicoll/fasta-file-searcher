@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Search16s
 {
@@ -304,7 +305,45 @@ namespace Search16s
             // If the meta-data string is not matched, alert the user.
             if (found == 0)
             {
-                Console.WriteLine("Error, DNA string {0} not found.", metaDataString);
+                Console.WriteLine("Error, meta-data string {0} not found.", metaDataString);
+            }
+
+            stream.Close();
+        }
+
+        public void Level7Search(string queryString)
+        {
+            // Replace all '*' in the query string with the appropriate regex symbol for 
+            // "any amount of any character" - '.*'.
+            string regexString = queryString.Replace("*", ".*");
+
+            // Then create a regex object with this properly formatted string.
+            Regex rx = new Regex(@regexString);
+
+            int found = 0;
+
+            // Loop through every line in the stream until the query string regex is mathced.
+            for (int i = 0; i < offsets.Count; i++)
+            {
+                if (rx.IsMatch(GetLine(offsets[i])))
+                {
+                    found = 1;
+
+                    // If there is more than 1 id in the line, they will all be split up and printed out.
+                    string[] entries = GetLine(offsets[i-1]).Split('>');
+
+                    for (int j = 1; j < entries.Length; j++)
+                    {
+                        // Print the matching sequence id.
+                        Console.WriteLine(entries[j].Substring(0, 11));
+                    }
+                }
+            }
+
+            // If the query string is not matched, alert the user.
+            if (found == 0)
+            {
+                Console.WriteLine("Error, query string {0} not found.", queryString);
             }
 
             stream.Close();

@@ -11,6 +11,6 @@
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>-level6 16s.fasta Archaeoglobus</StartArguments>
+    <StartArguments>-level7 16s.fasta ATTCTGGTTGATCCTGCCAGAGG%2aCCCTTCGGGGATGCAAGCACCGGCGGA%2aGGGAAACTGGGGCTAAT</StartArguments>
   </PropertyGroup>
 </Project>
