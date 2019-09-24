@@ -195,7 +195,7 @@ namespace Search16s
                 FileStream inStream = new FileStream(queryFile, FileMode.Open);
                 StreamReader inReader = new StreamReader(inStream);
 
-                FileStream indexStream = new FileStream(queryFile, FileMode.Open);
+                FileStream indexStream = new FileStream(indexFile, FileMode.Open);
                 StreamReader indexReader = new StreamReader(indexStream);
 
                 FileStream outStream = new FileStream(outFile, FileMode.Open);
@@ -226,8 +226,8 @@ namespace Search16s
 
                     if (found == 1)
                     {
-                        Console.WriteLine(GetLine(searchIndex));
-                        //outWriter.WriteLine(GetLine(searchIndex));
+                        outWriter.WriteLine(GetLine(searchIndex));
+                        outWriter.WriteLine(GetLine(searchIndex + GetLine(searchIndex).Length + 1));
                     }
                     else
                     {
@@ -237,6 +237,7 @@ namespace Search16s
 
                 inStream.Close();
                 outStream.Close();
+                indexStream.Close();
             }
             // If the supplied query file name does not exist, display an error message to the user.
             else

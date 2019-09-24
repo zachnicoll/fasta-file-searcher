@@ -18,6 +18,7 @@ namespace Search16s
 
         public void Index()
         {
+            Console.WriteLine("INDEXING");
             inStream = new FileStream(inFile, FileMode.Open);
 
             File.Create(outFile).Dispose();
@@ -39,19 +40,28 @@ namespace Search16s
                 if (line.Contains(">"))
                 {
                     string[] entries = line.Split('>');
-
-                    foreach (string str in entries)
+                    long temp = 0;
+                    for(int i = 1; i < entries.Length; i++)
                     {
+                        string str = entries[i];
                         if (str.Length > 0)
                         {
-                            writer.WriteLine(str.Substring(0, 11) + " " + position);
-                            position += str.Length;
+                            if (i == 1)
+                            {
+                                temp = position;
+                                writer.WriteLine(str.Substring(0, 11) + " " + position);
+                                position += line.Length + 1;
+                            }
+                            else
+                            {
+                                writer.WriteLine(str.Substring(0, 11) + " " + temp);
+                            }
                         }
                     }
                 }
                 else
                 {
-                    position += line.Length;
+                    position += line.Length + 1;
                 }
             }
 

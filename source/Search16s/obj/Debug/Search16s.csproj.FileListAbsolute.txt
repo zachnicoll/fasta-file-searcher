@@ -33,3 +33,9 @@ C:\Users\Zek\OneDrive\University Documents\Semester 2 2019\CAB201\Assignment\Sea
 C:\Users\Zek\OneDrive\University Documents\Semester 2 2019\CAB201\Assignment\Search16s-II\Search16s\bin\Debug\Search16s.exe
 C:\Users\Zek\OneDrive\University Documents\Semester 2 2019\CAB201\Assignment\Search16s-II\Search16s\bin\Debug\Search16s.pdb
 C:\Users\Zek\OneDrive\University Documents\Semester 2 2019\CAB201\Assignment\Search16s-II\Search16s\obj\Debug\Search16s.csprojAssemblyReference.cache
+C:\Repos\fastafilesearcher_cab201\source\Search16s\bin\Debug\Search16s.exe.config
+C:\Repos\fastafilesearcher_cab201\source\Search16s\bin\Debug\Search16s.exe
+C:\Repos\fastafilesearcher_cab201\source\Search16s\bin\Debug\Search16s.pdb
+C:\Repos\fastafilesearcher_cab201\source\Search16s\obj\Debug\Search16s.csproj.CoreCompileInputs.cache
+C:\Repos\fastafilesearcher_cab201\source\Search16s\obj\Debug\Search16s.exe
+C:\Repos\fastafilesearcher_cab201\source\Search16s\obj\Debug\Search16s.pdb

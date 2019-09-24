@@ -11,6 +11,6 @@
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>-level3 16S.fasta query.txt results.txt</StartArguments>
+    <StartArguments>-index 16s.fasta 16s.index</StartArguments>
   </PropertyGroup>
 </Project>
