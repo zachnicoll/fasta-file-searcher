@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 
-namespace Search16s
+namespace FastaSearch
 {
-    class Search16s
+    class FastaSearch
     {
         static void Main(string[] args)
         {

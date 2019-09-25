@@ -1,0 +1,2 @@
+Find the source code to this project in the FastaSearch folder. Please run the Visual Studio solution to edit and compile the code.
+An already compiled binary can be found in the bin folder of the previous directory.

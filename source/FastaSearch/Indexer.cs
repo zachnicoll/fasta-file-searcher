@@ -2,7 +2,7 @@
 using System.IO;
 using System.Collections.Generic;
 
-namespace Search16s
+namespace FastaSearch
 {
     // Class used for indexing a given .fasta file.
     class Indexer

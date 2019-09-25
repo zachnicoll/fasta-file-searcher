@@ -1,0 +1,7 @@
+C:\Repos\fastafilesearcher_cab201\source\Search16s\bin\Release\Search16s.exe.config
+C:\Repos\fastafilesearcher_cab201\source\Search16s\bin\Release\Search16s.exe
+C:\Repos\fastafilesearcher_cab201\source\Search16s\bin\Release\Search16s.pdb
+C:\Repos\fastafilesearcher_cab201\source\Search16s\obj\Release\Search16s.csprojAssemblyReference.cache
+C:\Repos\fastafilesearcher_cab201\source\Search16s\obj\Release\Search16s.csproj.CoreCompileInputs.cache
+C:\Repos\fastafilesearcher_cab201\source\Search16s\obj\Release\Search16s.exe
+C:\Repos\fastafilesearcher_cab201\source\Search16s\obj\Release\Search16s.pdb
