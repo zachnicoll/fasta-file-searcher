@@ -13,7 +13,7 @@ namespace Search16s
         private FileStream stream;
         public Searchable(string fileName)
         {
-            // Create a FileStream that can be parsed into functions, pointing to the .fasta file.
+            // Create a FileStream that can be accessed by functions, pointing to the .fasta file.
             stream = new FileStream(fileName, FileMode.Open);
 
             // Find the offsets and lengths of each line in the supplied .fasta file.
@@ -72,8 +72,8 @@ namespace Search16s
         }
 
         // Level1Search()
-        // Performs a Level1 sequential search on the parsed stream. Takes a starting line,
-        // number of desired output sequences, offset array, and FileStream.
+        // Performs a Level1 sequential search on the object's stream. Takes a starting line,
+        // number of desired output sequences and offset array.
         public void Level1Search(int line, int nSeq)
         {
             // Line number must be odd and greater than 0.
@@ -99,8 +99,8 @@ namespace Search16s
         }
 
         // Level2Search()
-        // Performs a Level2 sequential search on the supplied FileStream and prints the sequence
-        // with the matching id. Takes an array of byte offsets, an id to compare, and a FileStream to search.
+        // Performs a Level2 sequential search on the object's FileStream and prints the sequence
+        // with the matching id. Takes an id to compare.
         public void Level2Search(string id)
         {
             int found = 0;
@@ -129,10 +129,9 @@ namespace Search16s
         }
 
         // Level3Search()
-        // Perform a Level3 sequential search on the parsed FileStream. Similiar to a Level2 search,
+        // Perform a Level3 sequential search on the object's FileStream. Similiar to a Level2 search,
         // however a file containing the desired match ids must be parsed, as well as a file to store
-        // the resultant matches. Takes an array of byte offsets, a file names of the query file and
-        // output file, and a FileStream to search.
+        // the resultant matches. Takes file names of the query file and output file.
         public void Level3Search(string queryFile, string outFile)
         {
             if (File.Exists(queryFile))
@@ -185,6 +184,10 @@ namespace Search16s
             }
         }
 
+        // Level4Search()
+        // Perform a Level4 direct search on the object's file stream with a given index file.
+        // Running the "-index" command is necessary first to create a index file for the
+        // given .fasta file. Takes an index, query, and output file name as input.
         public void Level4Search(string indexFile, string queryFile, string outFile)
         {
             if (File.Exists(indexFile) && File.Exists(queryFile))
@@ -242,13 +245,17 @@ namespace Search16s
                 outStream.Close();
                 indexStream.Close();
             }
-            // If the supplied query file name does not exist, display an error message to the user.
+            // If the supplied query/index file name does not exist, display an error message to the user.
             else
             {
-                Console.WriteLine("\n\t<ERROR>\n\n\tInvalid query file name. Check that the name is correct and that the file exists, and try again.");
+                Console.WriteLine("\n\t<ERROR>\n\n\tInvalid query or index file name. Check that the name is correct and that the file exists, and try again.");
             }
         }
 
+        // Level5Search()
+        // Performs a Level5 sequential search on the object's FileStream. Searches each line of the
+        // .fasta file for a mathcing DNA sequence, and prints the corresponding sequence-id. Takes
+        // a query string.
         public void Level5Search(string queryString)
         {
             int found = 0;
@@ -280,6 +287,9 @@ namespace Search16s
             stream.Close();
         }
 
+        // Level6Search()
+        // Performs a Level6 sequential search on the object's FileStream. Similar to a Level5 search,
+        // except searches for a supplied meta-data query string. Takes a meta-data string.
         public void Level6Search(string metaDataString)
         {
             int found = 0;
@@ -311,6 +321,11 @@ namespace Search16s
             stream.Close();
         }
 
+        // Level7Search()
+        // Perform a sequential Level7Search on the object's FileStream using regular expressions.
+        // Supplied query strings can contain '*' characters that mean "any amount of chracters" between
+        // two sequences. Will print all corresponding sequence ids that match this pattern. 
+        // Takes a query string.
         public void Level7Search(string queryString)
         {
             // Replace all '*' in the query string with the appropriate regex symbol for 

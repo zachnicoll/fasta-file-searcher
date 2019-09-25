@@ -31,7 +31,8 @@ namespace Search16s
                         Indexer indexer = new Indexer(fileName, outFile);
                         indexer.Index();
                     }
-                    else {
+                    else
+                    {
 
                         // Create object of class Searchable, so search functions may be performed.
                         Searchable searchObj = new Searchable(fileName);
@@ -43,8 +44,7 @@ namespace Search16s
                             int lineNumber = Convert.ToInt32(args[2]);
                             int nSequences = Convert.ToInt32(args[3]);
 
-                            // Perform a Level 1 search on the .fasta file with the desired starting line number and number of output sequences,
-                            // offset array, and file stream.
+                            // Perform a Level 1 search on the .fasta file with the desired starting line number and number of output sequences.
                             searchObj.Level1Search(lineNumber, nSequences);
                         }
                         // Search level 2 requires 3 arguments in total.
@@ -64,26 +64,37 @@ namespace Search16s
                             // Parse them into the Level3 search function.
                             searchObj.Level3Search(inFile, outFile);
                         }
+                        // Search level 4 requires 5 arguments in total.
                         else if (searchLevel == "-level4" && args.Length == 5)
                         {
+                            // Hold the file names from user input in string variables.
                             string indexFile = args[2];
                             string inFile = args[3];
                             string outFile = args[4];
 
+                            // Parse them into the Level4 search function.
                             searchObj.Level4Search(indexFile, inFile, outFile);
                         }
+                        // Search level 5 requires 3 arguments in total.
                         else if (searchLevel == "-level5" && args.Length == 3)
                         {
+                            // Hold the query in a string variable.
                             string queryString = args[2];
+
+                            // Parse it into the Level5 search function.
                             searchObj.Level5Search(queryString);
                         }
-                        else if(searchLevel == "-level6" && args.Length == 3)
+                        // Search level 6 requires 3 arguments in total.
+                        else if (searchLevel == "-level6" && args.Length == 3)
                         {
+                            // Hold the meta-data string and parse it into the Level6 search function.
                             string metaDataString = args[2];
                             searchObj.Level6Search(metaDataString);
                         }
-                        else if(searchLevel == "-level7" && args.Length == 3)
+                        // Search level 7 requires 3 arguments in total.
+                        else if (searchLevel == "-level7" && args.Length == 3)
                         {
+                            // Hold the query string and parse it into the Level7 search function.
                             string queryString = args[2];
                             searchObj.Level7Search(queryString);
                         }
